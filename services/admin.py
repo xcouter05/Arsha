@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Features , Options , Services
 
-# Register your models here.
+
+admin.site.register(Services)
+admin.site.register(Features)
+admin.site.register(Options)
