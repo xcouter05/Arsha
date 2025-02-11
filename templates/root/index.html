@@ -249,14 +249,25 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
               <div class="icon"><i class="bi bi-activity icon"></i></div>
-              <h4><a href={% url "services:post_detail" id=service.id %} class="stretched-link">{{service.title}}</a></h4>
+              <h4><a href={% url "services:post_detail" service.id %} class="stretched-link">{{service.title}}</a></h4>
               <p>{{service.desc}}</p>
             </div>
           </div><!-- End Service Item -->
           {% endfor %}
 
         </div>
-
+        <div class="pagination">
+          {% if services.has_previous %}
+              <a href="?page=1"><button>first page</button></a>
+              <a href="?page={{ services.previous_page_number }}"><button>previous page</button></a>
+          {% endif %}
+          {% if services.has_next %}
+              <a href="?page={{ services.next_page_number }}"><button> next page</button></a>
+              <a href="?page={{ services.paginator.num_pages }}"><button>last page</button></a>
+          {% endif %}
+      </div>
+      
+      </div>  
       </div>
 
     </section><!-- /Services Section -->
